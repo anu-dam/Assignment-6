@@ -62,7 +62,7 @@ $.ajax({
     method: "GET"
 }).then(function (response) {
 
-    console.log(response);
+    
 
     var myArr = []
 
@@ -77,13 +77,11 @@ $.ajax({
             myDate   = myArr[0].dt_txt.split(" ");
             
 
-            // console.log (myArr[1]);
+            
             
             
             var icon1 = myArr[0].weather[0].icon;
-
-            
-
+        
             var img1 = '<img src="https://openweathermap.org/img/w/' + icon1 + '.png">';
 
             $('#icon1').empty();
@@ -97,29 +95,77 @@ $.ajax({
             
             $("#temp1").text("Temp : " + myArr[0].main.temp + "C");
             $("#humid1").text("Humid : " + myArr[0].main.humidity);
-
+            $("#des").text(myArr[0].weather[0].description);
 
             
         }
 
     }
 
+    console.log(myArr[2].main.temp);
     
-    $("#dateTwo").text(myDate[0]);
+    myDate1 = (myArr[1].dt_txt.split(" "));
+
+    $("#dateTwo").text(myDate1[0]);
     $("#temp2").text("Temp :" + myArr[1].main.temp);
     $("#humid2").text("Humid :" + myArr[1].main.humidity);
+    $("#des1").text(myArr[1].weather[0].description);
+
+    myDate2 = (myArr[2].dt_txt.split(" "));
             
-    $("#dateThree").text(myDate[0]);
+    $("#dateThree").text(myDate2[0]);
     $("#temp3").text("Temp :" + myArr[2].main.temp);
     $("#humid3").text("Humid :" + myArr[2].main.humidity);
+    $("#des2").text(myArr[2].weather[0].description);
 
-    $("#dateFour").text(myDate[0]);
+    myDate3 = (myArr[3].dt_txt.split(" "));
+
+    $("#dateFour").text(myDate3[0]);
     $("#temp4").text("Temp :" + myArr[3].main.temp);
     $("#humid4").text("Humid :" + myArr[3].main.humidity);
+    $("#des3").text(myArr[3].weather[0].description);
 
-    $("#dateFive").text(myDate[0]);
+    myDate4 = (myArr[4].dt_txt.split(" "));
+
+    $("#dateFive").text(myDate4[0]);
     $("#temp5").text("Temp :" + myArr[4].main.temp);
     $("#humid5").text("Humid :" + myArr[4].main.humidity);
+    $("#des4").text(myArr[4].weather[0].description);
+
+
+    var icon1 = myArr[0].weather[0].icon;
+    var icon2 = myArr[1].weather[0].icon;
+    var icon3 = myArr[2].weather[0].icon;
+    var icon4 = myArr[3].weather[0].icon;
+    var icon5 = myArr[4].weather[0].icon;
+
+
+        
+        var img1 = '<img src="https://openweathermap.org/img/w/' + icon1 + '.png">';
+        var img2 = '<img src="https://openweathermap.org/img/w/' + icon2 + '.png">';
+        var img3 = '<img src="https://openweathermap.org/img/w/' + icon3 + '.png">';
+        var img4 = '<img src="https://openweathermap.org/img/w/' + icon4 + '.png">';
+        var img5 = '<img src="https://openweathermap.org/img/w/' + icon5 + '.png">';
+
+
+        $('#icon1').empty();
+        $('#icon1').append(img1);
+
+        $('#icon2').empty();
+        $('#icon2').append(img2);
+
+        $('#icon3').empty();
+        $('#icon3').append(img3);
+
+        $('#icon4').empty();
+        $('#icon4').append(img4);
+
+        $('#icon5').empty();
+        $('#icon5').append(img5);
+
+
+    console.log(myArr[0].weather[0]);
+    
    
 
 });
