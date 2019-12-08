@@ -59,18 +59,28 @@
     /* border: 1px solid rgba(0,0,0,.125); */
 
     background-color: rgba(0,0,0,.03);
+    border-style: solid;
+    background-color: lightblue;
   }
 
   .col-md-2{
 
     
-    margin-left: 10px;
+    margin-left: 20px;
     margin-top: 20px;
 
-    border: black 1px;
+    border-style: solid;
+    background-color: lightblue;
     
 
   }
+
+  .col-lg-4{
+
+
+  }
+
+  
 
   /* .col-lg-4{
 
