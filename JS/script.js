@@ -1,7 +1,11 @@
 
 var city;
 
+var apiKey = "&appid=75eb6e5eb20db39b88a78417b81c45f6";
+
 var today = moment().format('LL');
+
+
 
 function callApi(city) {
 
@@ -12,7 +16,7 @@ function callApi(city) {
         method: "GET"
     }).then(function (response) {
 
-
+        console.log(response);    
 
         $("#city").text("Current Weather in " + response.name);
         $("#date").text(today);
@@ -21,7 +25,6 @@ function callApi(city) {
         $("#temp").text("Temprature : " + response.main.temp + " C");
         $("#humid").text("Humidity : " + response.main.humidity);
         $("#wind").text("Wind Speed : " + response.wind.speed);
-        $("#pr").text("Pressure : " + response.main.pressure);
         $("#cond").text("Condition : " + response.weather[0].description);
 
         var icon = response.weather[0].icon;
@@ -40,6 +43,7 @@ $("#searchBtn").on("click", function () {
 
     callApi(city);
     previous(city);
+    uvData(city);
 
 });
 
@@ -48,6 +52,7 @@ $(".selection").on("click", function () {
     var city = event.target.id;
     callApi(city);
     previous(city);
+    uvData(city);
 
 
 
@@ -102,7 +107,7 @@ function previous(city) {
 
         }
 
-        console.log(myArr[2].main.temp);
+        
 
         myDate1 = (myArr[1].dt_txt.split(" "));
 
@@ -164,13 +169,50 @@ function previous(city) {
         $('#icon5').append(img5);
 
 
-        console.log(myArr[0].weather[0]);
+        
 
 
 
     });
 }
 
-// https://api.openweathermap.org/data/2.5/forecast?qlondon&mode=xml&appid=75eb6e5eb20db39b88a78417b81c45f6
+
+function uvData(city){
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=75eb6e5eb20db39b88a78417b81c45f6";
+
+    $.ajax({
+        url: queryURL + apiKey,
+        method: "GET"
+    }).then(function (response) {
+
+       var lat = response.coord.lat;
+       var lon = response.coord.lon;
+
+    var uvURL = "https://api.openweathermap.org/data/2.5/uvi?=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+
+    $.ajax({
+        url: uvURL,
+        method: "GET"
+    }).then(function (response) {
+
+       console.log(response);
+
+       $("#uv").text("UV : " + response.value);
+        
+    });
+
+     });
+
+
+
+
+}
+
+
+
+
+
+
 
 
