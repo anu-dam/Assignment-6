@@ -60,7 +60,7 @@ $(".selection").on("click", function () {
 
 function previous(city) {
 
-    var previousURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=75eb6e5eb20db39b88a78417b81c45f6";
+    var previousURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=75eb6e5eb20db39b88a78417b81c45f6";
 
     $.ajax({
         url: previousURL,
